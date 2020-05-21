@@ -6,6 +6,7 @@ export default function( { name, email, password, onChange, terms, checkbox, sub
         <>
             <form onSubmit = { submit }>
                 <label htmlFor = "name">
+                    Name
                     <input 
                         id = "name" 
                         name = "name" 
@@ -14,11 +15,13 @@ export default function( { name, email, password, onChange, terms, checkbox, sub
                         value = { name }
                         onChange = { onChange }
                     />
+                    <h1>{ errors.name }</h1>
                 </label>
 
                 <br/>
 
                 <label htmlFor = "email">
+                    Email
                     <input 
                         id = "email" 
                         name = "email" 
@@ -27,11 +30,13 @@ export default function( { name, email, password, onChange, terms, checkbox, sub
                         value = { email }
                         onChange = { onChange }
                     />
+                    <h1>{ errors.email }</h1>
                 </label>
 
                 <br/>
 
                 <label htmlFor = "password">
+                    Password
                     <input 
                         id = "password" 
                         name = "password" 
@@ -40,20 +45,24 @@ export default function( { name, email, password, onChange, terms, checkbox, sub
                         value = { password }
                         onChange = { onChange }
                     />
+                    <h1>{ errors.password }</h1>
                 </label>
 
                 <br/>
 
                 <label htmlFor = "terms">
+                    Terms
                     <input
                         id = "terms" 
                         type = "checkbox"
                         name = "terms"
                         checked = { terms }
                         onChange = { checkbox }
+                        style = { { fontSize : '200px' } }
                     />
                 </label>
 
+                <br/>
                 <br/>
 
                 <button type="submit" disabled = { disabled }>Submit</button>

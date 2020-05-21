@@ -16,8 +16,27 @@ function App()
   const [ errors, setErrors ] = useState( initialErrors );
   const [ disabled, setDisabled ] = useState( true );
 
-  const onChange = e => setForm( { ...form, [ e.target.name ] : e.target.value } );
+  const onChange = e => 
+  {
+    const { name } =  e.target;
+    const { value } = e.target;
 
+    yup
+      .reach( formSchema, name )
+      .validate( value )
+      .then( valid => 
+        {
+          setErrors( { ...errors, [ name ] : "" } )
+        } )
+      .catch( err => 
+        {
+          setErrors( { ...errors, [ name ] : err.errors[ 0 ] } )
+        } )
+
+
+
+    setForm( { ...form, [ name ] : value } );
+  }
   const checkbox = e => setForm( { ...form, [ e.target.name ] : e.target.checked } );
 
   const postUser = newUser =>
